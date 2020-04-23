@@ -15,17 +15,16 @@ function loadImgToCanvas(url, width, height) {
 
 var images = [];
 function getAllImages() {
-  const BASE_URL = 'https://pixabay.com/api/?key=16193030-01150588670c2653b17fe8298&image_type=photo&min_width=150&min_height=150&per_page=200&order=latest'
-  const categories = ['dogs', 'cats'];
+  const BASE_URL = 'https://pixabay.com/api/?key=16193030-01150588670c2653b17fe8298&image_type=photo&min_width=150&min_height=150&per_page=200&order=latest';
+  const getDogs = fetch(`${BASE_URL}&q=dogs`);
+  const getCats = fetch(`${BASE_URL}&q=cats`);
 
-  fetch(`${BASE_URL}&q=${categories[Math.round(Math.random())]}`)
-    .then((res) => res.json())
-    .then(({ hits }) => {
-      images = hits;
+  Promise.all([getDogs, getCats])
+    .then((arrRes) => Promise.all(arrRes.map((res) => res.json())))
+    .then((res) => {
+      images = res[0].hits.concat(res[1].hits);
     })
-    .catch((err) => {
-      console.log(err);
-    })
+    .catch((err) => console.log(err))
 }
 
 getAllImages();
