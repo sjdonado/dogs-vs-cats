@@ -7,13 +7,22 @@
     <link rel="stylesheet" type="text/css" href="assets/index.css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/jimp@0.9.3/browser/lib/jimp.min.js"></script>
+    <script src="assets/predictor.js"></script>
     <script src="assets/index.js"></script>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
   <body>
     <h1>Dogs vs Cats</h1>
     <div class="wrapper">
       <canvas id="random-img"></canvas>
-      <input type="submit" value="Get random img" onclick="getImage()">
+      <span id="prediction">Cargando...</span>
+      <input id="random-btn" type="submit" value="Get random img" onclick="getImage()" disabled>
+      <div class="github-buttons">
+        <a class="github-button" href="https://github.com/sjdonado/dogs-vs-cats" data-icon="octicon-star" data-show-count="true" aria-label="Star sjdonado/dogs-vs-cats on GitHub">Star</a>
+        <a class="github-button" href="https://github.com/sjdonado/dogs-vs-cats/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork sjdonado/dogs-vs-cats on GitHub">Fork</a>
+      </div>
+      <h5>Model accuracy: 0.8905</h5>
+      <img src="assets/imgs/dogs-vs-cats.png" width="300" />
     </div>
   </body>
 </html>

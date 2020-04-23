@@ -1,8 +1,6 @@
 const preprocess = (image) => {
   let tensor = tf.browser.fromPixels(image)
     .resizeNearestNeighbor([150, 150])
-    .mean(2)
-    .expandDims(2)
     .expandDims()
     .toFloat();
 
@@ -12,12 +10,13 @@ const preprocess = (image) => {
 function predict(image) {
   if (window.model) {
     const scores = window.model.predict(preprocess(image)).dataSync();
-    predicted = scores.indexOf(Math.max(...scores));
-    document.getElementById('prediction').innerText = predicted;
+    document.getElementById('prediction').innerText = scores <= 0.5 ? 'Cat' : 'Dog';
+    document.getElementById('random-btn').disabled = false;
   }
 }
 
 (async () => {
   window.model = await tf.loadLayersModel('model/model.json');
   console.log('model loaded!');
+  getImage();
 })()

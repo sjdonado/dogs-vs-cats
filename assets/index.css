@@ -21,3 +21,11 @@ h1 {
   width: 150px;
   height: 150px;
 }
+
+#prediction {
+  margin-top: 12px;
+}
+
+.github-buttons {
+  margin-top: 12px;
+}
