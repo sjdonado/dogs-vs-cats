@@ -22,6 +22,10 @@ h1 {
   height: 150px;
 }
 
+#img-url {
+  display: none;
+}
+
 #prediction {
   margin-top: 12px;
 }

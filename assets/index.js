@@ -7,10 +7,12 @@ function loadImgToCanvas(url, width, height) {
   const img = new Image();
   img.onload = function() {
     ctx.drawImage(img, 0, 0);
+    document.getElementById('img-url').style.display = 'block';
     predict(canvas);
   };
   img.crossOrigin = 'anonymous';
   img.src = url;
+  document.getElementById('img-url').href = url;
 }
 
 var images = [];
@@ -32,6 +34,7 @@ getAllImages();
 function getImage() {
   if (images.length > 0) {
     document.getElementById('random-btn').disabled = true;
+    document.getElementById('img-url').style.display = 'none';
     document.getElementById('prediction').innerText = 'Cargando...';
     const { webformatURL, webformatWidth, webformatHeight } = images[Math.round(Math.random() * 200)];
     loadImgToCanvas(webformatURL, webformatWidth, webformatHeight);
