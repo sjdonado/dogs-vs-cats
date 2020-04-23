@@ -13,20 +13,28 @@ function loadImgToCanvas(url, width, height) {
   img.src = url;
 }
 
-function getImage() {
+var images = [];
+function getAllImages() {
   const BASE_URL = 'https://pixabay.com/api/?key=16193030-01150588670c2653b17fe8298&image_type=photo&min_width=150&min_height=150&per_page=200&order=latest'
   const categories = ['dogs', 'cats'];
-  document.getElementById('random-btn').disabled = true;
 
   fetch(`${BASE_URL}&q=${categories[Math.round(Math.random())]}`)
     .then((res) => res.json())
     .then(({ hits }) => {
-      const { webformatURL, webformatWidth, webformatHeight } = hits[Math.round(Math.random() * 200)]
-      loadImgToCanvas(webformatURL, webformatWidth, webformatHeight);
+      images = hits;
     })
     .catch((err) => {
       console.log(err);
     })
 }
 
-getImage();
+getAllImages();
+
+function getImage() {
+  if (images.length > 0) {
+    document.getElementById('random-btn').disabled = true;
+    document.getElementById('prediction').innerText = 'Cargando...';
+    const { webformatURL, webformatWidth, webformatHeight } = images[Math.round(Math.random() * 200)];
+    loadImgToCanvas(webformatURL, webformatWidth, webformatHeight);
+  }
+}
