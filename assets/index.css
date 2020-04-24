@@ -6,30 +6,63 @@ h1 {
   text-align: center;
 }
 
-.wrapper {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.wrapper > input {
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-container > input {
   margin-top: 12px;
 }
 
 #random-img {
-  width: 150px;
-  height: 150px;
+  width: 300px;
+  height: 300px;
 }
 
 #img-url {
   display: none;
 }
 
+.scores-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 #prediction {
-  margin-top: 12px;
+  margin-top: 6px;
+}
+
+#scores-pie {
+  max-width: 282.8px;
+  max-height: 156.4px;
 }
 
 .github-buttons {
   margin-top: 12px;
+}
+
+.model-img {
+  min-width: 300px;
+  width: 60%;
 }

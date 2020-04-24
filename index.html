@@ -6,24 +6,31 @@
     <title>Dogs vs Cats</title>
     <link rel="stylesheet" type="text/css" href="assets/index.css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jimp@0.9.3/browser/lib/jimp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
     <script src="assets/predictor.js"></script>
     <script src="assets/index.js"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </head>
   <body>
     <h1>Dogs vs Cats</h1>
-    <div class="wrapper">
-      <canvas id="random-img"></canvas>
-      <a id="img-url" href="#" target="_blank">Open image in new tab</a>
-      <span id="prediction">Cargando...</span>
-      <input id="random-btn" type="submit" value="Get random img" onclick="getImage()" disabled>
+    <div class="container">
+      <div class="wrapper">
+        <div class="img-container">
+          <canvas id="random-img"></canvas>
+          <a id="img-url" href="#" target="_blank">Open image in new tab</a>
+          <input id="random-btn" type="submit" value="Get random image" onclick="getImage()" disabled>
+        </div>
+        <div class="scores-container">
+          <canvas id="scores-pie"></canvas>
+          <span id="prediction">Cargando...</span>
+        </div>
+      </div>
       <div class="github-buttons">
         <a class="github-button" href="https://github.com/sjdonado/dogs-vs-cats" data-icon="octicon-star" data-show-count="true" aria-label="Star sjdonado/dogs-vs-cats on GitHub">Star</a>
         <a class="github-button" href="https://github.com/sjdonado/dogs-vs-cats/fork" data-icon="octicon-repo-forked" data-show-count="true" aria-label="Fork sjdonado/dogs-vs-cats on GitHub">Fork</a>
       </div>
       <h4>Model accuracy: 0.8905</h4>
-      <img src="assets/imgs/dogs-vs-cats.png" width="300" />
+      <img class="model-img" src="assets/imgs/dogs-vs-cats.png" />
       <span>Random images from pixabay API</span>
     </div>
   </body>
