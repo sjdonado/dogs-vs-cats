@@ -1,15 +1,20 @@
-function drawChart(scores) {
+var chart;
+function createChart() {
   const ctx = document.getElementById('scores-pie').getContext('2d');
-  new Chart(ctx, {
+  chart = new Chart(ctx, {
     type: 'pie',
     data: {
       datasets: [{
-        data: [(1 - scores) * 100, scores * 100],
         backgroundColor: ['rgba(255, 99, 132)', 'rgba(54, 162, 235)'],
       }],
       labels: ['Cat', 'Dog'],
     },
   });
+}
+
+function drawChart(scores) {
+  chart.data.datasets[0].data = [(1 - scores) * 100, scores * 100];
+  chart.update();
 }
 
 const preprocess = (image) => {
@@ -33,5 +38,6 @@ function predict(image) {
 (async () => {
   window.model = await tf.loadLayersModel('model/model.json');
   console.log('model loaded!');
+  createChart();
   getImage();
 })()
